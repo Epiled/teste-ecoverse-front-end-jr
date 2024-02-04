@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Banner from '../components/Banner';
 import Menu from '../components/Menu';
 import Categorias from '../components/Categorias';
@@ -7,7 +7,8 @@ import Relacionados from '../components/Relacionados';
 import Marcas from '../components/Marcas';
 import Rodape from '../components/Rodape';
 import Modal from '../components/Modal';
-
+import { IProduto } from '../interfaces/IProduto';
+import axios from 'axios';
 
 const Home: React.FC = () => {
 
@@ -15,22 +16,49 @@ const Home: React.FC = () => {
   const [produtoSelecionado, setProdutoSelecionado] = useState<IProduto>();
   const [modalAberta, setModal] = useState(false);
 
+  useEffect(() => {
+    axios.get('http://localhost:3000/db/produtos.json')
+      .then(resposta => {
+        setProdutos(resposta.data.products);
+      })
+      .catch(erro => {
+        console.log(erro)
+      })
+  }, [])
+
+  function selecionaProduto(produtoSelecionado: IProduto) {
+    setProdutoSelecionado(produtoSelecionado);
+    setProdutos((produtosAnteriores) => produtosAnteriores.map((produto, index) => ({
+      ...produto,
+      id: String(index),
+      selecionado: produto.id === produtoSelecionado.id ? true : false
+    })))
+  }
+
+  function onModal(modal: boolean) {
+    setModal(true);
+  }
+
+  function offModal(modal: boolean) {
+    setModal(false);
+  }
+
   return (
     <>
       <Menu />
       <Banner />
       <Categorias />
-      {/* <Produtos
+      <Produtos
         produtos={produtos}
         selecionaProduto={selecionaProduto}
         onModal={onModal}
-      /> */}
+      />
       <Relacionados />
       <Marcas />
-      {/* {modalAberta && <Modal
+      {modalAberta && <Modal
         produtoSelecionado={produtoSelecionado}
         offModal={offModal}
-      />} */}
+      />}
       <Rodape />
     </>)
 }
