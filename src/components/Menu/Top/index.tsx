@@ -42,17 +42,16 @@ const Top: React.FC = () => {
             <img src={item.imagem} width='20px' height='20px' alt='' />
 
             {item.padrao ? (
-              <span>
+              <span className={style.top__txt}>
                 <span className={style.top__destaque}>{item.destaque}</span>
                 {item.texto}
               </span>
             ) : (
-              <span>
+              <span className={style.top__txt}>
                 {item.texto} 
                 <span className={style.top__destaque}>{item.destaque}</span>
               </span>
             )}
-
           </span>
         )
       })}
