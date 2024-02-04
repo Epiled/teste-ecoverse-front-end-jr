@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import styleGlobal from './styles/EstilosGlobais.module.scss'
+import Home from './pages/Home'
 
 const App: React.FC = () => {
 
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <Route path='/404' element={<Home />} />
         <Route path='*' element={<Home />} />
       </Routes>
+
     </BrowserRouter>
   )
 }
