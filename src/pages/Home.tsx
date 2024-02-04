@@ -1,7 +1,12 @@
+import Titulo from "../components/Titulo"
+
 const Home: React.FC = () => {
-  return <>
-    Olá
-  </>
+  return (
+  <>
+    <Titulo>
+      Olá Mundo
+    </Titulo>
+  </>)
 }
 
 export default Home
