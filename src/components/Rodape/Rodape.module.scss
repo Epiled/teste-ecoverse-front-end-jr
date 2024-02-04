@@ -1,24 +1,24 @@
 .rodape {
-  background-color: #2A2A2A;
-  color: #ffffff;
+  background-color: var(--color-gray-darker-3);
+  color: var(--lighter);
 
   &__wrap {
-    max-width: 1280px;
+    max-width: 128rem;
     margin: 0 auto;
-    padding: 60px 0 30px 0;
+    padding: 6rem 0 3rem 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 60px;
+    gap: 6rem;
 
     &--alt {
-      padding: 30px 0;
+      padding: 3rem 0;
     }
   }
 
   &__titulo {
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
     text-transform: uppercase;
 
     &--alt {
@@ -26,11 +26,11 @@
     }
 
     &--letter {
-      background: #ffffff;
-      color: #3F3F40;
+      background: var(--lighter);
+      color: var(--color-gray-darker-1);
       font-weight: 300;
-      font-size: 18px;
-      margin-bottom: 15px;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
       text-align: center;
     }
 
@@ -39,20 +39,20 @@
   &__destaque {
     display: block;
     font-weight: 700;
-    font-size: 21px;
+    font-size: 2.1rem;
   }
 
   &__links {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    font-size: 12px;
+    gap: 1.6rem;
+    font-size: 1.2rem;
     font-weight: 300;
     text-transform: uppercase;
   }
 
   &__link {
-    color: #ffffff;
+    color: var(--lighter);
     text-decoration: none;
   }
 
@@ -60,36 +60,36 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    gap: 20px;
+    gap: 2rem;
   }
 
   &__letter {
-    border-radius: 10px;
-    background: #ffffff;
-    padding: 40px;
+    border-radius: 1rem;
+    background: var(--lighter);
+    padding: 4rem;
     text-align: center;
-    width: 380px;
+    width: 38rem;
     margin-left: auto;
   }
 
   &__txt {
-    color: #3F3F40;
-    font-size: 12px;
+    color: var(--color-gray-darker-1);
+    font-size: 1.2rem;
     font-weight: 300;
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
   }
 
   &__formulario {
     display: flex;
     justify-content: center;
-    height: 45px;
+    height: 4.5rem;
   }
 
   &__ipt {
-    border-radius: 4px;
-    border: 1px solid #2a2a2a;
-    padding: 12px 25px;
-    margin-right: 9px;
+    border-radius: .4rem;
+    border: .1rem solid var(--color-gray-darker-2);
+    padding: 1.2rem 2.5rem;
+    margin-right: .9rem;
     box-sizing: border-box;
 
     &::placeholder {
@@ -98,13 +98,13 @@
   }
 
   &__copyright {
-    border-top: 1px solid #ffffff;
-    font-size: 10px;
+    border-top: .1rem solid var(--lighter);
+    font-size: 1rem;
     text-transform: uppercase;
   }
   
   &__copy {
-    max-width: 700px;
+    max-width: 70rem;
   }
 
   &__imagem {

@@ -1,7 +1,7 @@
 .produtos {
-  max-width: 1280px;
+  max-width: 128rem;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2rem;
 
   @media screen and (min-width: 1300px) {
     & {
@@ -10,8 +10,8 @@
   }
 
   &__titulo {
-    color: #f71963;
-    font-size: 30px;
+    color: var(--color-main);
+    font-size: 3rem;
     font-weight: 700;
     text-align: center;
   }
@@ -23,34 +23,34 @@
   }
 
   &__categoria {
-    border: 1px solid #bdbdbd;
-    color: #3B3B3B;
+    border: .1rem solid var(--color-gray-lighter-1);
+    color: var(--color-gray-darker-4);
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1 0 0;
-    font-size: 16px;
-    padding: 12px;
+    font-size: 1.6rem;
+    padding: 1.2rem;
     text-align: center;
     text-decoration: none;
 
     &--ativo {
-      color: #f71963;
+      color: var(--color-main);
       font-weight: 700;
     }
   }
 
   &__vitrine {
     position: relative;
-    margin-top: 15px;
+    margin-top: 1.5rem;
   }
 
   &__wrap {
     display: flex;
     justify-content: space-between;
-    gap: 62px;
+    gap: 6.2rem;
     overflow: hidden;
-    padding: 10px;
+    padding: 1rem;
   }
 
   &__setas {
@@ -58,13 +58,13 @@
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
-    height: 50px;
+    height: 5rem;
   }
 
   &__seta {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     background-color: transparent;
     background-image: url(../../assets/svg/Vector.svg);
     background-repeat: no-repeat;
@@ -73,31 +73,31 @@
     border-radius: 50%;
 
     @media screen and (max-width: 1440px) {
-      background-color: #9696964d;
-      background-size: 15px;
-      padding: 5px;
+      background-color: var(--color-gray-lighter-1-aplha);
+      background-size: 1.5rem;
+      padding: .5rem;
     }
 
     &:hover {
-      background-color: #5b5b5b4d;
+      background-color: var(--color-gray-lighter-2-aplha);
     }
 
     &--esq {
-      left: -65px;
+      left: -6.5rem;
     }
 
     &--dir {
-      right: -65px;
+      right: -6.5rem;
       transform: rotate(180deg);
     }
 
     @media screen and (max-width: 1440px) {
       &--esq {
-        left: 0px;
+        left: 0;
       }
   
       &--dir {
-        right: 0px;
+        right: 0;
         transform: rotate(180deg);
       }
     }
@@ -107,9 +107,8 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    gap: 2rem;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
   }
-
 }

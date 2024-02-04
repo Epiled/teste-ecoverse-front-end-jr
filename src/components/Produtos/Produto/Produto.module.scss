@@ -1,53 +1,53 @@
 .produto {
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.22);
-  padding: 17px 10px;
-  max-width: 270px;
+  border-radius: 1rem;
+  box-shadow: 0 .3rem 1.9rem 0 var(--shadow-1);
+  padding: 1.7rem 1rem;
+  max-width: 27rem;
 
   &__titulo {
-    color: #3F3F40;
-    font-size: 15px;
+    color: var(--color-gray-darker-1);
+    font-size: 1.5rem;
     font-weight: 300;
-    margin: 10px 0;
+    margin: 1rem 0;
   }
 
   &__valorAntigo {
-    color: #808080;
-    font-size: 16px;
+    color: var(--color-gray-lighter-2);
+    font-size: 1.6rem;
     font-weight: 400;
     text-decoration: line-through;
   }
 
   &__valor {
-    color: #3F3F40;
-    font-size: 20px;
+    color: var(--color-gray-darker-1);
+    font-size: 2rem;
     font-weight: 700;
   }
 
   &__parcelas {
-    color: #3F3F40;
-    font-size: 12px;
+    color: var(--color-gray-darker-1);
+    font-size: 1.2rem;
   }
 
   &__frete {
-    color: #F71963;
-    font-size: 12px;
-    margin-top: 5px;
+    color: var(--color-main);
+    font-size: 1.2rem;
+    margin-top: .5rem;
   }
 
   &__btn {
-    background-color: #F71963;
+    background-color: var(--color-main);
     text-align: center;
-    border-radius: 4px;
-    color: #ffffff;
-    font-size: 14px;
+    border-radius: .4rem;
+    color: var(--lighter);
+    font-size: 1.4rem;
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    margin-top: 10px;
-    height: 44px;
+    margin-top: 1rem;
+    height: 4.4rem;
     display: flex;
     align-items: center;
     justify-content: center;

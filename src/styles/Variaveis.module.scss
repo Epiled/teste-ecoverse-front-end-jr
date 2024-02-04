@@ -1,14 +1,32 @@
 :root {
   --darker: #000000;
   --lighter: #ffffff;
-  --color-gray-darker-1: #121212;
-  --color-gray-darker-2: #242424;
-  --color-gray-darker-3: #1a1a1a;
-  --color-gray-lighter-1: #b3b3b3;
-  --color-gray-lighter-2: #a7a7a7;
-  --bg-header: #090909;
-  --bg-input-hover: #2a2a2a;
-  --bg-album: #181818;
-  --bg-album-hover: #282828;
-  --shadow: #0000007f;
+  --color-main: #f71963;
+  --color-complement: #041E50;
+
+  --color-white-1: #d0d0d0;
+  --color-white-2: #f6f5f2;
+  --color-white-3: #faf4fa;
+
+  --color-gray-darker-1: #3f3f40;
+  --color-gray-darker-2: #2a2a2a;
+  --color-gray-darker-3: #242424;
+  --color-gray-darker-4: #3b3b3b;
+  --color-gray-darker-5: #222222;
+  --color-gray-darker-6: #4E4E4E;
+
+  --color-gray-lighter-1: #bdbdbd;
+  --color-gray-lighter-2: #808080;
+  --color-gray-lighter-3: #707070;
+  --color-gray-lighter-4: #9f9f9f;
+
+  --color-gray-lighter-1-aplha: #9696964d;
+  --color-gray-lighter-2-aplha: #5b5b5b4d;
+
+  --shadow-1: #00000038;
+  --shadow-2: #0000008a;
+  --shadow-3: #3930131f;
+  --shadow-4: #00000021;
+
+  --no-color: #00000000;
 }

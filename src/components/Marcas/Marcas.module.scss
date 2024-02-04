@@ -1,13 +1,13 @@
 .marcas {
-  max-width: 1280px;
+  max-width: 128rem;
   margin: 0 auto;
   overflow: hidden;
 
   &__carrousel {
     display: flex;
-    gap: 40px;
-    margin: 60px 0;
-    padding: 0 20px;
+    gap: 4rem;
+    margin: 6rem 0;
+    padding: 0 2rem;
     position: relative;
   }
 
@@ -16,18 +16,17 @@
     background-position: center center;
     background-color: transparent;
     border: 0;
-    width: 56px;
-    height: 56px;
+    width: 5.6rem;
+    height: 5.6rem;
     position: absolute;
     top: 50%;
-    right: 45px;
+    right: 4.5rem;
     transform: translateY(-50%);
   }
 
   @media screen and (min-width: 1300px) {
     &__carrousel {
-      padding: 0 30px;
+      padding: 0 3rem;
     }
   }
-
 }

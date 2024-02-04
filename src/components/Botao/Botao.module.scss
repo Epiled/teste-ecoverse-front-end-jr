@@ -1,15 +1,15 @@
 .botao {
-  background: #F71963;
-  border-radius: 5px;
+  background: var(--color-main);
+  border-radius: .5rem;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: var(--lighter);
   display: inline-flex;
   align-items: center;
-  font-size: 16px;
-  padding: 15px 40px;
+  font-size: 1.6rem;
+  padding: 1.5rem 4rem;
   text-decoration: none;
 }
 
 .botao--banner {
-  margin-top: 20px;
+  margin-top: 2rem;
 }

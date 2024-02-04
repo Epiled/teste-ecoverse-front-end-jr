@@ -1,11 +1,11 @@
 .marca {
   display: flex;
-  width: 211px;
-  height: 211px;
-  padding: 20px;
+  width: 21.1rem;
+  height: 21.1rem;
+  padding: 2rem;
   box-sizing: border-box;
   border-radius: 100%;
-  box-shadow: 0px 7px 20px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 .7rem 2rem 0 var(--shadow-4);
 
   &__imagem {
     object-fit: contain;
