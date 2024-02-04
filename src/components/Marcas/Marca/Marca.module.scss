@@ -1,0 +1,14 @@
+.marca {
+  display: flex;
+  width: 211px;
+  height: 211px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  box-shadow: 0px 7px 20px 0px rgba(0, 0, 0, 0.13);
+
+  &__imagem {
+    object-fit: contain;
+    width: -webkit-fill-available;
+  }
+}

@@ -1,0 +1,113 @@
+.rodape {
+  background-color: #2A2A2A;
+  color: #ffffff;
+
+  &__wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 0 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+
+    &--alt {
+      padding: 30px 0;
+    }
+  }
+
+  &__titulo {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+
+    &--alt {
+      text-transform: none;
+    }
+
+    &--letter {
+      background: #ffffff;
+      color: #3F3F40;
+      font-weight: 300;
+      font-size: 18px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+  }
+
+  &__destaque {
+    display: block;
+    font-weight: 700;
+    font-size: 21px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  &__pagamentos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 20px;
+  }
+
+  &__letter {
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 40px;
+    text-align: center;
+    width: 380px;
+    margin-left: auto;
+  }
+
+  &__txt {
+    color: #3F3F40;
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+
+  &__formulario {
+    display: flex;
+    justify-content: center;
+    height: 45px;
+  }
+
+  &__ipt {
+    border-radius: 4px;
+    border: 1px solid #2a2a2a;
+    padding: 12px 25px;
+    margin-right: 9px;
+    box-sizing: border-box;
+
+    &::placeholder {
+      text-transform: uppercase;
+    }
+  }
+
+  &__copyright {
+    border-top: 1px solid #ffffff;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  
+  &__copy {
+    max-width: 700px;
+  }
+
+  &__imagem {
+    margin-left: auto;
+  }
+}
