@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   const [modalAberta, setModal] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/db/produtos.json')
+    axios.get('http://localhost:5173/db/produtos.json')
       .then(resposta => {
         setProdutos(resposta.data.products);
       })

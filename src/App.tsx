@@ -12,8 +12,8 @@ const App: React.FC = () => {
           <Route index path='/' element={<Home />} />
 
           {/* Rota de fallback */}
-          <Route path='/404' element={<Home />} />
-          <Route path='*' element={<Home />} />
+          {/* <Route path='/404' element={<Home />} /> */}
+          {/* <Route path='*' element={<Home />} /> */}
         </Routes>
 
       </BrowserRouter>
