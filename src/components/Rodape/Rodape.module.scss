@@ -2,13 +2,17 @@
   background-color: var(--color-gray-darker-3);
   color: var(--lighter);
 
+  @media screen and (max-width: 768px) {
+    padding: 0 1rem;
+  }
+
   &__wrap {
-    max-width: 128rem;
-    margin: 0 auto;
-    padding: 6rem 0 3rem 0;
     display: flex;
     flex-wrap: wrap;
     gap: 6rem;
+    margin: 0 auto;
+    padding: 6rem 0 3rem 0;
+    max-width: 128rem;
 
     &--alt {
       padding: 3rem 0;
@@ -53,6 +57,7 @@
 
   &__link {
     color: var(--lighter);
+    font-size: inherit;
     text-decoration: none;
   }
 
@@ -70,6 +75,11 @@
     text-align: center;
     width: 38rem;
     margin-left: auto;
+
+    @media screen and (max-width: 768px) {
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
   }
 
   &__txt {
@@ -91,9 +101,16 @@
     padding: 1.2rem 2.5rem;
     margin-right: .9rem;
     box-sizing: border-box;
+    width: 100%;
+    font-size: 1.2rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 1.2rem;
+    }
 
     &::placeholder {
       text-transform: uppercase;
+      color: var(--color-placeholder);
     }
   }
 
@@ -102,9 +119,10 @@
     font-size: 1rem;
     text-transform: uppercase;
   }
-  
+
   &__copy {
     max-width: 70rem;
+    font-size: 1rem;
   }
 
   &__imagem {

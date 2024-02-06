@@ -27,39 +27,40 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
 
   function moverTeste(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const tamanhoListaContainer = ref?.current ? ref.current.getBoundingClientRect().width : 0
-    const posicaoListaContainer = ref?.current ? ref.current.getBoundingClientRect().x : 0
+    const posicaoListaContainer = ref?.current ? ref.current.offsetLeft : 0
+    const sentido = e.currentTarget.dataset.sentido
+    let estiloAtual
 
     produtosRef.current.forEach(produto => {
-      let estiloAtual
-      const sentido = e.currentTarget.dataset.sentido
 
       if (produto) {
         estiloAtual = getComputedStyle(produto);
-        const posicaoXProduto = produto.getBoundingClientRect().x
+        const posicaoXProduto = produto.offsetLeft
 
-        console.log(posicaoXProduto)
-        console.log(tamanhoListaContainer)
+        let { valorAtual, larguraProduto } = handlePosition(estiloAtual, produto)
 
-        const translateXAtual = estiloAtual?.transform.replace(/[^0-9,-]/g, '');
-        const valorAtual = translateXAtual ? parseFloat(translateXAtual.split(',')[4].trim()) : 0;
-        const larguraProduto = produto.getBoundingClientRect().width
+        let novaPosicao = 0;
 
-        if (sentido === 'esq')
-          produto.style.transform = `translateX(${larguraProduto + valorAtual}px)`;
-        else
-          produto.style.transform = `translateX(-${larguraProduto - valorAtual}px)`;
-
-
-
-        if (posicaoXProduto > tamanhoListaContainer || posicaoXProduto < posicaoListaContainer) {
-          produto.style.opacity = '0'
+        if (sentido === 'esq') {
+          novaPosicao = valorAtual + larguraProduto
+          produto.style.transform = `translateX(${novaPosicao}px)`;
         } else {
-          produto.style.opacity = '1'
+          novaPosicao =  valorAtual - larguraProduto
+          produto.style.transform = `translateX(${novaPosicao}px)`;
         }
-      }
 
+      }
     });
   }
+
+  function handlePosition(estilos: CSSStyleDeclaration, produto: HTMLDivElement) {
+    const translateXAtual = estilos?.transform.replace(/[^0-9,-]/g, '');
+    const valorAtual = translateXAtual ? parseFloat(translateXAtual.split(',')[4].trim()) : 0;
+    const larguraProduto = produto.getBoundingClientRect().width
+
+    return { valorAtual, larguraProduto }
+  }
+
 
   const handleAllRef = (el: HTMLDivElement | null, index: number) => {
     produtosRef.current[index] = el;
