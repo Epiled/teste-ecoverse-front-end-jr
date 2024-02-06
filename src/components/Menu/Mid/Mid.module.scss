@@ -97,10 +97,26 @@
   &__iconLink {
     width: 3.2rem;
     height: 3.2rem;
+    stroke: var(--color-gray-lighter-4);
 
     &:first-of-type {
       width: 2.4rem;
       height: 2.4rem;
+    }
+
+    &:hover {
+      stroke: var(--color-main);
+      cursor: pointer;
+    }
+
+    &--fill {
+      fill: var(--color-gray-lighter-4);
+      stroke: var(--color-gray-lighter-4);
+
+      &:hover {
+        fill: var(--color-main);
+        stroke: var(--color-main);
+      }
     }
   }
 }

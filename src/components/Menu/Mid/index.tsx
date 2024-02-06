@@ -1,18 +1,18 @@
-import group from '../../../assets/svg/Group.svg';
-import heart from '../../../assets/svg/Heart.svg';
-import userCircle from '../../../assets/svg/UserCircle.svg';
-import shoppingCart from '../../../assets/svg/ShoppingCart.svg';
+/// <reference types="vite-plugin-svgr/client" />
+import Group from '../../../assets/svg/Group.svg?react';
+import Heart from '../../../assets/svg/Heart.svg?react';
+import UserCircle from '../../../assets/svg/UserCircle.svg?react';
+import ShoppingCart from '../../../assets/svg/ShoppingCart.svg?react';
 import logo from '../../../assets/img/logo.png';
 import style from './Mid.module.scss';
-
 interface IMid {
   setMenu: React.Dispatch<React.SetStateAction<boolean>>
   menu: boolean
   calculaMenu: () => void
 }
 
-const Mid: React.FC<IMid> = ({setMenu, menu, calculaMenu}) => {
-  
+const Mid: React.FC<IMid> = ({ setMenu, menu, calculaMenu }) => {
+
   return (
     <div className={style.mid}>
       <img className={style.mid__logo} src={logo} alt='' />
@@ -36,22 +36,10 @@ const Mid: React.FC<IMid> = ({setMenu, menu, calculaMenu}) => {
       </div>
 
       <div className={style.mid__icons}>
-        <img className={style.mid__iconLink}
-          src={group}
-          alt=''
-        />
-        <img className={style.mid__iconLink}
-          src={heart}
-          alt=''
-        />
-        <img className={style.mid__iconLink}
-          src={userCircle}
-          alt=''
-        />
-        <img className={style.mid__iconLink}
-          src={shoppingCart}
-          alt=''
-        />
+        <Group className={`${style.mid__iconLink} ${style['mid__iconLink--fill']}`} />
+        <Heart className={style.mid__iconLink} />
+        <UserCircle className={style.mid__iconLink} />
+        <ShoppingCart className={style.mid__iconLink} />
       </div>
     </div>
   )

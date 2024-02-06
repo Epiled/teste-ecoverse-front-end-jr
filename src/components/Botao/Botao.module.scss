@@ -8,8 +8,12 @@
   font-size: 1.6rem;
   padding: 1.5rem 4rem;
   text-decoration: none;
-}
 
-.botao--banner {
-  margin-top: 2rem;
+  &:hover {
+    background-color: var(--color-main-hover);
+  }
+
+  &--banner {
+    margin-top: 2rem;
+  }
 }

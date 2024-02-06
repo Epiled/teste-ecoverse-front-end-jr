@@ -5,6 +5,9 @@
   box-shadow: 0 .3rem 1.9rem 0 var(--shadow-1);
   padding: 1.7rem 1rem;
   max-width: 27rem;
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity .5s, transform .5s ;
 
   &__titulo {
     color: var(--color-gray-darker-1);
@@ -52,5 +55,15 @@
     align-items: center;
     justify-content: center;
     border: 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-main-hover);
+    }
+  }
+
+  &__hidden {
+    opacity: 0;
+    border: 5px solid blue;
   }
 }

@@ -11,13 +11,13 @@ interface Props {
   onModal: (onModal: boolean) => void;
 }
 
-
 const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
-  const listaRef = useRef<HTMLUListElement>(null);
+  const ref = useRef<HTMLUListElement>(null);
+  const produtosRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    // Aqui você pode acessar e utilizar a listaRef conforme necessário
-    console.log(listaRef.current);
+    // Aqui você pode acessar e utilizar a ref conforme necessário
+    //console.log(ref.current);
   }, [produtos]); // Este efeito será executado apenas uma vez ao montar o componente
 
   function movePosicaoX(item: any): number {
@@ -25,11 +25,52 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
     return 0
   }
 
+  function moverTeste(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    const tamanhoListaContainer = ref?.current ? ref.current.getBoundingClientRect().width : 0
+    const posicaoListaContainer = ref?.current ? ref.current.getBoundingClientRect().x : 0
+
+    produtosRef.current.forEach(produto => {
+      let estiloAtual
+      const sentido = e.currentTarget.dataset.sentido
+
+      if (produto) {
+        estiloAtual = getComputedStyle(produto);
+        const posicaoXProduto = produto.getBoundingClientRect().x
+
+        console.log(posicaoXProduto)
+        console.log(tamanhoListaContainer)
+
+        const translateXAtual = estiloAtual?.transform.replace(/[^0-9,-]/g, '');
+        const valorAtual = translateXAtual ? parseFloat(translateXAtual.split(',')[4].trim()) : 0;
+        const larguraProduto = produto.getBoundingClientRect().width
+
+        if (sentido === 'esq')
+          produto.style.transform = `translateX(${larguraProduto + valorAtual}px)`;
+        else
+          produto.style.transform = `translateX(-${larguraProduto - valorAtual}px)`;
+
+
+
+        if (posicaoXProduto > tamanhoListaContainer || posicaoXProduto < posicaoListaContainer) {
+          produto.style.opacity = '0'
+        } else {
+          produto.style.opacity = '1'
+        }
+      }
+
+    });
+  }
+
+  const handleAllRef = (el: HTMLDivElement | null, index: number) => {
+    produtosRef.current[index] = el;
+  }
+
   return (
     <section className={style.produtos}>
       <Titulo>
         Produtos relacionados
       </Titulo>
+
       <nav className={style.produtos__categorias}>
         <a className={`${style.produtos__categoria} ${style['produtos__categoria--ativo']}`} href="">Celular</a>
         <a className={style.produtos__categoria} href="">Acessórios</a>
@@ -38,22 +79,36 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
         <a className={style.produtos__categoria} href="">TVs</a>
         <a className={style.produtos__categoria} href="">Ver todos</a>
       </nav>
+
       <div className={style.produtos__vitrine}>
-        <ul className={style.produtos__wrap} ref={listaRef}>
+        <ul className={style.produtos__wrap} ref={ref}>
           {produtos.map((produto, index) => {
             return (
-            <Produto
-              funcao={() => movePosicaoX(produto)}
-              selecionaProduto={selecionaProduto}
-              onModal={onModal}
-              key={index}
-              {...produto}
-            />
-          )})}
+              <Produto
+                innerRef={(el) => handleAllRef(el, index)}
+                funcao={() => movePosicaoX(produto)}
+                selecionaProduto={selecionaProduto}
+                onModal={onModal}
+                key={index}
+                {...produto}
+              />
+            )
+          })}
         </ul>
+
         <div className={style.produtos__setas}>
-          <button className={`${style.produtos__seta} ${style['produtos__seta--esq']}`} aria-label='Retroceder lista de produtos'></button>
-          <button className={`${style.produtos__seta} ${style['produtos__seta--dir']}`} aria-label='Avançar lista de produtos'></button>
+          <button
+            onClick={(e) => { moverTeste(e) }}
+            data-sentido='esq'
+            className={`${style.produtos__seta} ${style['produtos__seta--esq']}`}
+            aria-label='Retroceder lista de produtos'>
+          </button>
+          <button
+            onClick={(e) => { moverTeste(e) }}
+            data-sentido='dir'
+            className={`${style.produtos__seta} ${style['produtos__seta--dir']}`}
+            aria-label='Avançar lista de produtos'>
+          </button>
         </div>
       </div>
 
