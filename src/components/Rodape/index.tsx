@@ -26,7 +26,9 @@ const Rodape: React.FC = () => {
     <footer className={style.rodape}>
       <div className={style.rodape__wrap}>
         <section>
-          <h4 className={`${style.rodape__titulo} ${style['rodape__titulo--alt']}`}>Sobre nós</h4>
+          <h4 className={`${style.rodape__titulo} ${style['rodape__titulo--alt']}`}>
+            Sobre nós
+          </h4>
           <div className={style.rodape__links}>
             <Link className={style.rodape__link} to={'/'}>Conheça</Link>
             <Link className={style.rodape__link} to={'/'}>Como Comprar</Link>

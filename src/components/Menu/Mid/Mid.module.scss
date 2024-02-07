@@ -14,6 +14,11 @@
     border: 0;
   }
 
+  @media screen and (min-width: 769px) and (max-width: 1280px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   &__logo {
     width: 100%;
     max-width: 139px;

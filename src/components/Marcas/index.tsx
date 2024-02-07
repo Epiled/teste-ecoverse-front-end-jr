@@ -5,7 +5,7 @@ import Marca from "./Marca";
 const Marcas: React.FC = () => {
   return (
     <section className={style.marcas}>
-      <Titulo>
+      <Titulo alt={true}>
         Navegue por marcas
       </Titulo>
 
