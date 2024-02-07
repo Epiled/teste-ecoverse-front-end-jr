@@ -1,5 +1,15 @@
 <h1 align="center" id="sobre">🔴 🟥 Teste Ecoverse - VTEX 🔴 🟥</h1>
 
+- Desenvolver a pagina em React e TypeScript conforme o [layout](https://www.figma.com/file/rWnzPeoxgynuNPsJjV0VmV/Teste-Front-End-Jr?node-id=0%3A1). Para conseguir pegar os elementos do Figma, basta copiar o layout para sua conta que terá acesso de edição.
+- Montar a [vitrine](https://app.econverse.com.br/teste-front-end/junior/tecnologia/layout/vitrine-produtos.png) de produtos consumindo as informações dos produtos em json atraves desse [Link](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json).
+- Desenvolver a interação ao clicar em um produto conforme layout. A interação consiste em abrir um modal com as principais informações do produto presente no arquivo [JSON](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json) conforme o produto que clicar.
+- Utilizar Pré-processador Sass, Less ou Stylus.
+- Respeitar o Layout pixel a pixel, tamanho das fontes, cores e botões.
+- Não Utilizar bibliotecas UI como Bootstrap, Foundation, ou afins.
+
+- Utilizar Boas práticas de SEO
+- Uso de HTML semântico
+
 ![Badge](https://img.shields.io/github/last-commit/Epiled/teste-front-end-jr?style=for-the-badge)
 ![Badge](https://img.shields.io/github/languages/code-size/Epiled/teste-front-end-jr?style=for-the-badge)
 ![Badge](https://img.shields.io/github/languages/count/Epiled/teste-front-end-jr?style=for-the-badge)
@@ -23,7 +33,7 @@
    * [Performance](#performance)
    * [Instalação](#instalacao)
    * [Como usar](#como-usar)
-      * [Arquivos Locais](#arquivos_locais)
+   * [Building](#building)
    * [Tecnologias](#tecnologias)
    * [Autor](#autor)
 <!--te-->
@@ -39,11 +49,11 @@
 <h2 id="demonstracao"> 👀 Demonstração </h2>
 
 <p>No link abaixo você pode ver a página no ar e rodar seus próprios teste de perfomance ou desempenho</p>
-<p>Teste Noweb - Elétrica J.Santos: <a href="https://epiled.github.io/teste-noweb/">epiled.github.io/teste-noweb/</a></p>
+<p>Teste Front-End - Ecoverse: <a href="https://epiled.github.io/teste-noweb/">epiled.github.io/teste-front-end-jr/</a></p>
 
-https://github.com/Epiled/teste_noweb/assets/55258483/146e33ff-26f8-4fa8-bec6-9d6d9bdaf38e
+https://github.com/Epiled/teste-front-end-jr/assets/55258483/349b8289-b663-43ef-a839-121c7cfefa76
 
-https://github.com/Epiled/teste_noweb/assets/55258483/0356188b-3053-4c70-b09e-011d51b9d2bd
+https://github.com/Epiled/teste-front-end-jr/assets/55258483/6b25026c-6d91-485e-8a88-06444b04251d
 
 <h2 id="performance"> 📈 Performance Lighthouse </h2>
 
@@ -64,7 +74,7 @@ https://github.com/Epiled/teste_noweb/assets/55258483/0356188b-3053-4c70-b09e-01
 2. Abra a seguinte url http://localhost:5173/
 ```
 
-<h2 id="como-usar"> ⚙ Building </h2>
+<h2 id="building"> ⚙ Building </h2>
 
 ```
 1. npm run build
