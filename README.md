@@ -1,4 +1,4 @@
-<h1 align="center" id="sobre">🔴 🟥 Teste Ecoverse - VTEX 🔴 🟥</h1>
+<h1 align="center" id="sobre">🔴 🟥 Teste Econverse - VTEX 🔴 🟥</h1>
 
 - Desenvolver a pagina em React e TypeScript conforme o [layout](https://www.figma.com/file/rWnzPeoxgynuNPsJjV0VmV/Teste-Front-End-Jr?node-id=0%3A1). Para conseguir pegar os elementos do Figma, basta copiar o layout para sua conta que terá acesso de edição.
 - Montar a [vitrine](https://app.econverse.com.br/teste-front-end/junior/tecnologia/layout/vitrine-produtos.png) de produtos consumindo as informações dos produtos em json atraves desse [Link](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json).
@@ -43,13 +43,13 @@
   Os arquivos de wireframes podem ser visto ou editados no seguinte link.
 <p>
 <p>
-  Figma: <a href="https://www.figma.com/file/bPKnwKLoP0TXZIWW0lKC3j/Teste-Front-End-Jr-(Copy)?type=design&node-id=0%3A1&mode=design&t=CHrQ8oxakRwqSGo0-1">Teste Front-End - Ecoverse</a>
+  Figma: <a href="https://www.figma.com/file/bPKnwKLoP0TXZIWW0lKC3j/Teste-Front-End-Jr-(Copy)?type=design&node-id=0%3A1&mode=design&t=CHrQ8oxakRwqSGo0-1">Teste Front-End - Econverse</a>
 </p>
 
 <h2 id="demonstracao"> 👀 Demonstração </h2>
 
 <p>No link abaixo você pode ver a página no ar e rodar seus próprios teste de perfomance ou desempenho</p>
-<p>Teste Front-End - Ecoverse: <a href="https://epiled.github.io/teste-noweb/">epiled.github.io/teste-front-end-jr/</a></p>
+<p>Teste Front-End - Ecoverse: <a href="https://teste-front-end-jr-mc15.vercel.app/">epiled.github.io/teste-front-end-jr/</a></p>
 
 https://github.com/Epiled/teste-front-end-jr/assets/55258483/349b8289-b663-43ef-a839-121c7cfefa76
 
