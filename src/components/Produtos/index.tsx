@@ -3,7 +3,7 @@ import Parceiro from '../Parceiro';
 import Titulo from '../Titulo';
 import Produto from './Produto';
 import { IProduto } from '../../interfaces/IProduto';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -13,8 +13,9 @@ interface Props {
 }
 
 const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
-  const ref = useRef<HTMLUListElement>(null);
-  const produtosRef = useRef<(HTMLDivElement | null)[]>([]);
+  const ref = useRef<HTMLUListElement | null>(null);
+  const produtosRef = useRef<Array<React.RefObject<HTMLLIElement>>>([]);
+
   const [animando, setAnimando] = useState(false);
   const containerTamanho = ref.current?.getBoundingClientRect().width || 0;
 
@@ -22,24 +23,24 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
   function moverItens(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (animando) return; // Evita cliques durante a animação
     setAnimando(true);
-
     const sentido = e.currentTarget.dataset.sentido;
     let estiloAtual;
     let valorAtual = 0;
     let larguraProduto = 0;
+    
+    const produtoRefPrimeiro = produtosRef.current[0].current;
+    const produtoRefPrimeiroPosition = produtoRefPrimeiro?.getBoundingClientRect().x || 0;
 
-    const produtoRefPrimeiro = produtosRef.current[0];
-    const produtoRefPrimeiroPosition = produtoRefPrimeiro?.getBoundingClientRect().x || 0
-
-    const produtoRefUltimo = produtosRef.current.at(-1);
+    const produtoRefUltimo = produtosRef.current.at(-1)?.current;
     const produtoRefUltimoPosition = produtoRefUltimo?.getBoundingClientRect().x || 0
 
     if (produtoRefPrimeiro) {
       estiloAtual = getComputedStyle(produtoRefPrimeiro);
       ({ valorAtual, larguraProduto } = handlePosition(estiloAtual, produtoRefPrimeiro));
     }
-    
-    produtosRef.current.forEach(produto => {
+
+    produtosRef.current.forEach(produtoRef => {
+      const produto = produtoRef.current;
       if (produto) {
         estiloAtual = getComputedStyle(produto);
 
@@ -63,17 +64,12 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
   }
 
   // Função Auxiliar do carroussel para coletar alguns valores
-  function handlePosition(estilos: CSSStyleDeclaration, produto: HTMLDivElement) {
+  function handlePosition(estilos: CSSStyleDeclaration, produto: HTMLLIElement) {
     const translateXAtual = estilos?.transform.replace(/[^0-9,-]/g, '');
     const valorAtual = translateXAtual ? parseFloat(translateXAtual.split(',')[4].trim()) : 0;
     const larguraProduto = produto.getBoundingClientRect().width
 
     return { valorAtual, larguraProduto }
-  }
-
-  // Ref de todos os itens no VirtualDOM
-  const handleAllRef = (el: HTMLDivElement | null, index: number) => {
-    produtosRef.current[index] = el;
   }
 
   return (
@@ -94,12 +90,15 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
       <div className={style.produtos__vitrine}>
         <ul className={style.produtos__wrap} ref={ref}>
           {produtos.map((produto, index) => {
+            produtosRef.current[index] = React.createRef();
+
             return (
               <Produto
-                innerRef={(el) => handleAllRef(el, index)}
+                index={index}
+                key={index}
+                ref={produtosRef.current[index]}
                 selecionaProduto={selecionaProduto}
                 onModal={onModal}
-                key={index}
                 {...produto}
               />
             )

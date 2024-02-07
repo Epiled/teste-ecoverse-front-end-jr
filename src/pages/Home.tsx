@@ -9,6 +9,7 @@ import Rodape from '../components/Rodape';
 import Modal from '../components/Modal';
 import { IProduto } from '../interfaces/IProduto';
 import axios from 'axios';
+import SuaComponente from '../components/Titulo/SuaComponente';
 
 const Home: React.FC = () => {
 
@@ -46,6 +47,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Menu />
+      <SuaComponente />
       <Banner />
       <Categorias />
       <Produtos
