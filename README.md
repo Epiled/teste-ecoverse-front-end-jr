@@ -49,7 +49,7 @@
 <h2 id="demonstracao"> 👀 Demonstração </h2>
 
 <p>No link abaixo você pode ver a página no ar e rodar seus próprios teste de perfomance ou desempenho</p>
-<p>Teste Front-End - Ecoverse: <a href="https://epiled.github.io/teste-noweb/">epiled.github.io/teste-front-end-jr/</a></p>
+<p>Teste Front-End - Ecoverse: <a href="https://teste-front-end-jr-mc15.vercel.app/">epiled.github.io/teste-front-end-jr/</a></p>
 
 https://github.com/Epiled/teste-front-end-jr/assets/55258483/349b8289-b663-43ef-a839-121c7cfefa76
 
