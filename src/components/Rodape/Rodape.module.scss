@@ -2,10 +2,6 @@
   background-color: var(--color-gray-darker-3);
   color: var(--lighter);
 
-  @media screen and (max-width: 768px) {
-    padding: 0 1rem;
-  }
-
   &__wrap {
     display: flex;
     flex-wrap: wrap;
@@ -13,6 +9,10 @@
     margin: 0 auto;
     padding: 6rem 0 3rem 0;
     max-width: 128rem;
+
+    @media screen and (max-width: 1280px) {
+      padding: 3rem 1rem 3rem 1rem;
+    }
 
     &--alt {
       padding: 3rem 0;
@@ -59,6 +59,12 @@
     color: var(--lighter);
     font-size: inherit;
     text-decoration: none;
+  }
+
+  &__social {
+    display: flex;
+    gap: 3.2rem;
+    margin-top: 7rem;
   }
 
   &__pagamentos {
@@ -118,6 +124,10 @@
     border-top: .1rem solid var(--lighter);
     font-size: 1rem;
     text-transform: uppercase;
+
+    @media screen and (max-width: 1280px) {
+      padding: 0rem 1rem;
+    }
   }
 
   &__copy {
@@ -127,5 +137,9 @@
 
   &__imagem {
     margin-left: auto;
+
+    @media screen and (max-width: 768px) {
+      margin: 0 auto;
+    }
   }
 }

@@ -39,7 +39,7 @@ const Top: React.FC = () => {
       {Topo.map((item, index) => {
         return (
           <span key={index} className={style.top__container}>
-            <img src={item.imagem} width='20px' height='20px' alt='' />
+            <img src={item.imagem} width='20px' height='20px' alt='#' />
 
             {item.padrao ? (
               <span className={style.top__txt}>

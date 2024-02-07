@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import classNames from 'classnames';
-import crownSimple from '../../../assets/svg/CrownSimple.svg';
+import CrownSimple from '../../../assets/svg/CrownSimple.svg?react';
 import style from './Navegacao.module.scss';
 
 interface INavegacao {
@@ -22,9 +22,9 @@ const Navegacao: React.FC<INavegacao> = ({tamanhoMenu, menuRef}) => {
         [style['navegacao__link--destaque']]
       )} to='#'>Ofertas do dia</Link>
       <Link className={style.navegacao__link} to='#'>
-        <img
-          src={crownSimple}
-          alt=''
+      <CrownSimple className={classNames(
+        [style['navegacao__link--crown']]
+        )}
         />
         Assinatura
       </Link>

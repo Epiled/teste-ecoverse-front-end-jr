@@ -6,52 +6,74 @@ import cuidadosDeSaude from '../../assets/svg/cuidados-de-saude-1.svg';
 import corrida from '../../assets/svg/corrida-1.svg';
 import moda from '../../assets/svg/moda-1.svg';
 import style from './Categorias.module.scss';
+import classNames from 'classnames';
 
-function Categorias() {
+interface ICategoria {
+  imagem: string,
+  texto: string,
+  padrao: boolean
+}
+
+const ListaCategorias: ICategoria[] = [
+  {
+    "imagem": monitorarTabletSmartphone,
+    "texto": "Tecnologia",
+    "padrao": false,
+  },
+  {
+    "imagem": supermercados,
+    "texto": "Supermercado",
+    "padrao": true,
+  },
+  {
+    "imagem": whiskey,
+    "texto": "Bebidas",
+    "padrao": true,
+  },
+  {
+    "imagem": ferramentas,
+    "texto": "Ferramentas",
+    "padrao": true,
+  },
+  {
+    "imagem": cuidadosDeSaude,
+    "texto": "Saúde",
+    "padrao": true,
+  },
+  {
+    "imagem": corrida,
+    "texto": "Esportes e Fitness",
+    "padrao": true,
+  },
+  {
+    "imagem": moda,
+    "texto": "Moda",
+    "padrao": true,
+  },
+]
+
+const Categorias: React.FC = () => {
   return (
     <div className={style.categorias}>
-      <a className={`${style.categoria} ${style['categoria--ativo']}`} href="">
-        <div className={`${style.categoria__box} ${style['categoria__box--ativo']}`}>
-          <img className={style.categoria__imagem} src={monitorarTabletSmartphone} alt="" />
-        </div>
-        Tecnologia
-      </a>
-      <a className={style.categoria} href="">
-        <div className={style.categoria__box}>
-          <img src={supermercados} alt="" />
-        </div>
-        Supermercado
-      </a>
-      <a className={style.categoria} href="">
-        <div className={style.categoria__box}>
-          <img src={whiskey} alt="" />
-        </div>
-        Bebidas
-      </a>
-      <a className={style.categoria} href="">
-        <div className={style.categoria__box}>
-          <img src={ferramentas} alt="" />
-        </div>
-        Ferramentas
-      </a>
-      <a className={style.categoria} href="">
-        <div className={style.categoria__box}>
-          <img src={cuidadosDeSaude} alt="" />
-        </div>
-        Saúde
-      </a>
-      <a className={style.categoria} href="">
-        <div className={style.categoria__box}>
-          <img src={corrida} alt="" />
-        </div>
-        Esportes e Fitness
-      </a>
-      <a className={style.categoria} href="">
-        <div className={style.categoria__box}>
-          <img src={moda} alt="" />
-        </div>
-        Moda
-      </a>
+
+      {ListaCategorias.map((item, index) => {
+        return (
+          <button key={index} className={classNames(
+            style.categoria,
+            { [style['categoria--ativo']]: !item.padrao }
+          )}>
+            <div className={classNames(
+              style.categoria__box, 
+              { [style['categoria__box--ativo']]: !item.padrao }
+              )}>
+              <img className={style.categoria__imagem} src={item.imagem} alt="#" />
+            </div>
+            {item.texto}
+          </button>
+        )
+      })}
+
+
     </div>
   )
 }

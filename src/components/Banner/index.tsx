@@ -1,7 +1,8 @@
+import React from "react";
 import Botao from "../Botao";
 import style from './Banner.module.scss'
 
-function Banner() {
+const Banner: React.FC = () => {
   return (
     <section className={style.banner}>
       <div className={style.banner__wrap}>

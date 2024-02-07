@@ -1,11 +1,12 @@
 import style from './Marca.module.scss';
 import vtex from '../../../assets/img/logo.png'
+import { Link } from 'react-router-dom';
 
-function Marca() {
+const Marca: React.FC = () => {
   return (
-    <a className={style.marca} href="">
-      <img className={style.marca__imagem} src={vtex} alt="" />
-    </a>
+    <Link className={style.marca} to={'/'}>
+      <img className={style.marca__imagem} src={vtex} alt="#" />
+    </Link>
   )
 }
 

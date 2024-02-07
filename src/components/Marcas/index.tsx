@@ -2,7 +2,7 @@ import Titulo from "../Titulo";
 import style from './Marcas.module.scss';
 import Marca from "./Marca";
 
-function Marcas() {
+const Marcas: React.FC = () => {
   return (
     <section className={style.marcas}>
       <Titulo>
@@ -10,14 +10,12 @@ function Marcas() {
       </Titulo>
 
       <div className={style.marcas__carrousel}>
-        <Marca />
-        <Marca />
-        <Marca />
-        <Marca />
-        <Marca />
-        <Marca />
-        <Marca />
-      <button className={style.marcas__avancar} aria-label="Botão de avançar marcas"></button>
+
+        {Array.from({ length: 8 }, (_, index) => (
+          <Marca key={index} />
+        ))}
+        
+        <button className={style.marcas__avancar} aria-label="Botão de avançar marcas"></button>
       </div>
     </section>
   )

@@ -17,6 +17,7 @@
     z-index: 2;
     transform: translateX(0);
     transition: .5s transform;
+    gap: 1rem;
   }
 
   &__link {
@@ -29,19 +30,27 @@
 
     &:hover {
       color: var(--color-main);
+
+      .navegacao__link--crown {
+        stroke: var(--color-main);
+      }
     }
-  
+
     &:last-of-type {
       display: flex;
       gap: 1.2rem;
     }
-  
+
     &--destaque {
       color: var(--color-main);
 
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    &--crown {
+      stroke: var(--color-gray-lighter-4)
     }
   }
 }

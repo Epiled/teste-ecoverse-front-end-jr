@@ -3,7 +3,8 @@ import Parceiro from '../Parceiro';
 import Titulo from '../Titulo';
 import Produto from './Produto';
 import { IProduto } from '../../interfaces/IProduto';
-import { useEffect, useRef } from 'react';
+import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
   produtos: IProduto[],
@@ -14,45 +15,54 @@ interface Props {
 const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
   const ref = useRef<HTMLUListElement>(null);
   const produtosRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [animando, setAnimando] = useState(false);
+  const containerTamanho = ref.current?.getBoundingClientRect().width || 0;
 
-  useEffect(() => {
-    // Aqui você pode acessar e utilizar a ref conforme necessário
-    //console.log(ref.current);
-  }, [produtos]); // Este efeito será executado apenas uma vez ao montar o componente
+  // Carroussel função e regras
+  function moverItens(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    if (animando) return; // Evita cliques durante a animação
+    setAnimando(true);
 
-  function movePosicaoX(item: any): number {
-    console.log(item.current?.getBoundingClientRect())
-    return 0
-  }
+    const sentido = e.currentTarget.dataset.sentido;
+    let estiloAtual;
+    let valorAtual = 0;
+    let larguraProduto = 0;
 
-  function moverTeste(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    const tamanhoListaContainer = ref?.current ? ref.current.getBoundingClientRect().width : 0
-    const posicaoListaContainer = ref?.current ? ref.current.offsetLeft : 0
-    const sentido = e.currentTarget.dataset.sentido
-    let estiloAtual
+    const produtoRefPrimeiro = produtosRef.current[0];
+    const produtoRefPrimeiroPosition = produtoRefPrimeiro?.getBoundingClientRect().x || 0
 
+    const produtoRefUltimo = produtosRef.current.at(-1);
+    const produtoRefUltimoPosition = produtoRefUltimo?.getBoundingClientRect().x || 0
+
+    if (produtoRefPrimeiro) {
+      estiloAtual = getComputedStyle(produtoRefPrimeiro);
+      ({ valorAtual, larguraProduto } = handlePosition(estiloAtual, produtoRefPrimeiro));
+    }
+    
     produtosRef.current.forEach(produto => {
-
       if (produto) {
         estiloAtual = getComputedStyle(produto);
-        const posicaoXProduto = produto.offsetLeft
-
-        let { valorAtual, larguraProduto } = handlePosition(estiloAtual, produto)
 
         let novaPosicao = 0;
 
         if (sentido === 'esq') {
+          if (produtoRefPrimeiroPosition >= 0) return
           novaPosicao = valorAtual + larguraProduto
           produto.style.transform = `translateX(${novaPosicao}px)`;
         } else {
-          novaPosicao =  valorAtual - larguraProduto
+          if (produtoRefUltimoPosition <= (containerTamanho - larguraProduto)) return
+          novaPosicao = valorAtual - larguraProduto
           produto.style.transform = `translateX(${novaPosicao}px)`;
         }
-
       }
     });
+
+    setTimeout(() => {
+      setAnimando(false);
+    }, 500); // Ajuste o tempo conforme necessário para a duração da animação
   }
 
+  // Função Auxiliar do carroussel para coletar alguns valores
   function handlePosition(estilos: CSSStyleDeclaration, produto: HTMLDivElement) {
     const translateXAtual = estilos?.transform.replace(/[^0-9,-]/g, '');
     const valorAtual = translateXAtual ? parseFloat(translateXAtual.split(',')[4].trim()) : 0;
@@ -61,7 +71,7 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
     return { valorAtual, larguraProduto }
   }
 
-
+  // Ref de todos os itens no VirtualDOM
   const handleAllRef = (el: HTMLDivElement | null, index: number) => {
     produtosRef.current[index] = el;
   }
@@ -73,12 +83,12 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
       </Titulo>
 
       <nav className={style.produtos__categorias}>
-        <a className={`${style.produtos__categoria} ${style['produtos__categoria--ativo']}`} href="">Celular</a>
-        <a className={style.produtos__categoria} href="">Acessórios</a>
-        <a className={style.produtos__categoria} href="">Tablets</a>
-        <a className={style.produtos__categoria} href="">Notebooks</a>
-        <a className={style.produtos__categoria} href="">TVs</a>
-        <a className={style.produtos__categoria} href="">Ver todos</a>
+        <Link to={'/'} className={`${style.produtos__categoria} ${style['produtos__categoria--ativo']}`}>Celular</Link>
+        <Link to={'/'} className={style.produtos__categoria}>Acessórios</Link>
+        <Link to={'/'} className={style.produtos__categoria}>Tablets</Link>
+        <Link to={'/'} className={style.produtos__categoria}>Notebooks</Link>
+        <Link to={'/'} className={style.produtos__categoria}>TVs</Link>
+        <Link to={'/'} className={style.produtos__categoria}>Ver todos</Link>
       </nav>
 
       <div className={style.produtos__vitrine}>
@@ -87,7 +97,6 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
             return (
               <Produto
                 innerRef={(el) => handleAllRef(el, index)}
-                funcao={() => movePosicaoX(produto)}
                 selecionaProduto={selecionaProduto}
                 onModal={onModal}
                 key={index}
@@ -99,13 +108,13 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
 
         <div className={style.produtos__setas}>
           <button
-            onClick={(e) => { moverTeste(e) }}
+            onClick={(e) => { moverItens(e) }}
             data-sentido='esq'
             className={`${style.produtos__seta} ${style['produtos__seta--esq']}`}
             aria-label='Retroceder lista de produtos'>
           </button>
           <button
-            onClick={(e) => { moverTeste(e) }}
+            onClick={(e) => { moverItens(e) }}
             data-sentido='dir'
             className={`${style.produtos__seta} ${style['produtos__seta--dir']}`}
             aria-label='Avançar lista de produtos'>

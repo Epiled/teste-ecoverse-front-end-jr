@@ -10,11 +10,12 @@
   box-sizing: border-box;
 
   &--alt {
-    background-image: url(../../assets/img/produtos.png);
     height: 28.4rem;
+    background-position: left center;
+    background-size: 170%;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
     & {
       flex: 1;
     }
@@ -46,6 +47,6 @@
 
   &__txt {
     font-size: 1.6rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3.2rem;
   }
 }

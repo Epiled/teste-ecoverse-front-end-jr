@@ -2,10 +2,12 @@ import { IProduto } from '../../interfaces/IProduto'
 import style from './Modal.module.scss'
 import foto from '../../assets/img/mobile.png'
 
+interface ModalProps {
+  produtoSelecionado?: IProduto;
+  offModal: (onModal: boolean) => void;
+}
 
-function Modal(
-  { produtoSelecionado, offModal }:
-  { produtoSelecionado?: IProduto, offModal: (onModal: boolean) => void }) {
+const Modal: React.FC<ModalProps> = ({ produtoSelecionado, offModal }) => {
 
   return (
     <aside className={style.modal}>

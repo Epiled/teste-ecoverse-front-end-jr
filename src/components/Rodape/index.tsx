@@ -1,44 +1,53 @@
+/// <reference types="vite-plugin-svgr/client" />
 import style from './Rodape.module.scss';
-import alelo from '../../assets/svg/formas-de-pagamento/alelo.svg';
-import amex from '../../assets/svg/formas-de-pagamento/amex.svg';
-import dinners from '../../assets/svg/formas-de-pagamento/dinners.svg';
-import elo from '../../assets/svg/formas-de-pagamento/elo.svg';
-import ifood from '../../assets/svg/formas-de-pagamento/ifood.svg';
-import mastercard from '../../assets/svg/formas-de-pagamento/mastercard.svg';
-import pix from '../../assets/svg/formas-de-pagamento/pix.svg';
-import sodexo from '../../assets/svg/formas-de-pagamento/sodexo.svg';
-import ticket from '../../assets/svg/formas-de-pagamento/ticket.svg';
-import visa from '../../assets/svg/formas-de-pagamento/visa.svg';
-import rodapeImagem from '../../assets/svg/rodape__imagem.svg';
-import Botao from '../Botao';
+import Alelo from '../../assets/svg/formas-de-pagamento/alelo.svg?react';
+import Amex from '../../assets/svg/formas-de-pagamento/amex.svg?react';
+import Dinners from '../../assets/svg/formas-de-pagamento/dinners.svg?react';
+import Elo from '../../assets/svg/formas-de-pagamento/elo.svg?react';
+import Ifood from '../../assets/svg/formas-de-pagamento/ifood.svg?react';
+import Mastercard from '../../assets/svg/formas-de-pagamento/mastercard.svg?react';
+import Pix from '../../assets/svg/formas-de-pagamento/pix.svg?react';
+import Sodexo from '../../assets/svg/formas-de-pagamento/sodexo.svg?react';
+import Ticket from '../../assets/svg/formas-de-pagamento/ticket.svg?react';
+import Visa from '../../assets/svg/formas-de-pagamento/visa.svg?react';
 
-function Rodape() {
+import RodapeImagem from '../../assets/svg/rodape__imagem.svg?react';
+
+import Facebook from '../../assets/svg/social/facebook.svg?react';
+import Instagram from '../../assets/svg/social/instagram.svg?react';
+import Youtube from '../../assets/svg/social/youtube.svg?react';
+
+import Botao from '../Botao';
+import { Link } from 'react-router-dom';
+
+const Rodape: React.FC = () => {
+
   return (
     <footer className={style.rodape}>
       <div className={style.rodape__wrap}>
         <section>
           <h4 className={`${style.rodape__titulo} ${style['rodape__titulo--alt']}`}>Sobre nós</h4>
           <div className={style.rodape__links}>
-            <a className={style.rodape__link} href="">Conheça</a>
-            <a className={style.rodape__link} href="">Como Comprar</a>
-            <a className={style.rodape__link} href="">Indicação e Desconto</a>
+            <Link className={style.rodape__link} to={'/'}>Conheça</Link>
+            <Link className={style.rodape__link} to={'/'}>Como Comprar</Link>
+            <Link className={style.rodape__link} to={'/'}>Indicação e Desconto</Link>
           </div>
-          <div>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+          <div className={style.rodape__social}>
+            <Facebook />
+            <Instagram />
+            <Youtube />
           </div>
         </section>
 
         <section>
           <h4 className={style.rodape__titulo}>Informações Úteis</h4>
           <div className={style.rodape__links}>
-            <a className={style.rodape__link} href="">Fale Conosco</a>
-            <a className={style.rodape__link} href="">Dúvidas</a>
-            <a className={style.rodape__link} href="">Prazos de entrega</a>
-            <a className={style.rodape__link} href="">Formas de pagamento</a>
-            <a className={style.rodape__link} href="">Política de privacidade</a>
-            <a className={style.rodape__link} href="">Trocas e devoluções</a>
+            <Link className={style.rodape__link} to={'/'}>Fale Conosco</Link>
+            <Link className={style.rodape__link} to={'/'}>Dúvidas</Link>
+            <Link className={style.rodape__link} to={'/'}>Prazos de entrega</Link>
+            <Link className={style.rodape__link} to={'/'}>Formas de pagamento</Link>
+            <Link className={style.rodape__link} to={'/'}>Política de privacidade</Link>
+            <Link className={style.rodape__link} to={'/'}>Trocas e devoluções</Link>
           </div>
         </section>
 
@@ -46,16 +55,16 @@ function Rodape() {
           <h4 className={style.rodape__titulo}>Formas de Pagamento</h4>
 
           <div className={style.rodape__pagamentos}>
-            <img src={visa} alt="" />
-            <img src={elo} alt="" />
-            <img src={alelo} alt="" />
-            <img src={dinners} alt="" />
-            <img src={ifood} alt="" />
-            <img src={mastercard} alt="" />
-            <img src={pix} alt="" />
-            <img src={amex} alt="" />
-            <img src={ticket} alt="" />
-            <img src={sodexo} alt="" />
+            <Alelo />
+            <Amex />
+            <Dinners />
+            <Elo />
+            <Ifood />
+            <Mastercard />
+            <Pix />
+            <Sodexo />
+            <Ticket />
+            <Visa />
           </div>
         </aside>
 
@@ -69,7 +78,7 @@ function Rodape() {
           </p>
           <form className={style.rodape__formulario} action="">
             <input className={style.rodape__ipt} placeholder='Seu e-mail' type="email" name="" id="" />
-            <Botao ancora='#'>
+            <Botao className={'botao--form'} ancora='#'>
               Ok
             </Botao>
           </form>
@@ -82,7 +91,7 @@ function Rodape() {
             Copyright © 2019. Todos os direitos reservados. Todas as marcas e suas imagens são de propriedade de seus respectivos donos.
             É vedada a reprodução, total ou parcial, de qualquer conteúdo sem expressa autorização.
           </p>
-          <img className={style.rodape__imagem} src={rodapeImagem} alt="" />
+          <RodapeImagem className={style.rodape__imagem} />
         </div>
       </div>
     </footer>

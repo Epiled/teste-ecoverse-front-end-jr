@@ -1,12 +1,9 @@
 import style from './Produto.module.scss';
-import produtoImagem from '../../../assets/img/mobile.png';
 import { IProduto } from '../../../interfaces/IProduto';
-import React, { useRef } from 'react';
 
 interface Props extends IProduto {
   selecionaProduto: (produtoSelecionado: IProduto) => void;
   onModal: (onModal: boolean) => void;
-  funcao: (item: any) => void;
   innerRef?: (el: HTMLDivElement | null) => void;
 }
 
@@ -20,25 +17,12 @@ const Produto: React.FC<Props> = (
     produtoSelecionado,
     selecionaProduto,
     onModal,
-    funcao,
     innerRef
   }) => {
-
-  const produtoRef = useRef<HTMLLIElement>(null);
-
-  // Adicione um console.log sempre que o componente Produto for renderizado
-  //console.log('Novo Produto criado:', produtoRef.current?.getBoundingClientRect());
-
-  const handleClick = () => {
-    const boundingBox = produtoRef.current?.getBoundingClientRect().x;
-    console.log(boundingBox);
-    funcao(boundingBox);
-  };
 
   return (
     <li 
     className={style.produto}
-     onClick={handleClick}
      ref={innerRef}
      >
       <img className={style.produto__imagem} src={photo} alt="" />

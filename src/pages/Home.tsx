@@ -35,11 +35,11 @@ const Home: React.FC = () => {
     })))
   }
 
-  function onModal(modal: boolean) {
+  function onModal() {
     setModal(true);
   }
 
-  function offModal(modal: boolean) {
+  function offModal() {
     setModal(false);
   }
 

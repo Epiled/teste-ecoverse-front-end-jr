@@ -2,8 +2,9 @@
   max-width: 128rem;
   margin: 0 auto;
   position: relative;
-
+  
   @media screen and (max-width: 768px) {
+    overflow-x: clip;
     padding: 1rem;
   }
 }

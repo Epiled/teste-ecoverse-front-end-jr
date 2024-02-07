@@ -5,7 +5,7 @@ import Top from './Top';
 import Mid from './Mid';
 import Navegacao from './Navegacao';
 
-function Menu() {
+const Menu: React.FC = () => {
   const [menu, setMenu] = useState<boolean>(false);
   const [tamanhoMenu, setTamanhoMenu] = useState(0);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -25,7 +25,7 @@ function Menu() {
     <header>
       <nav className={style.menu}>
         <Top />
-        <Mid setMenu={setMenu} menu={menu} calculaMenu={calculaMenu} />
+        <Mid setMenu={setMenu} menuOpen={menu} calculaMenu={calculaMenu} />
         <Navegacao tamanhoMenu={tamanhoMenu} menuRef={menuRef} />
       </nav>
     </header>
