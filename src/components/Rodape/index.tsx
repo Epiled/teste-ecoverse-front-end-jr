@@ -26,9 +26,9 @@ const Rodape: React.FC = () => {
     <footer className={style.rodape}>
       <div className={style.rodape__wrap}>
         <section>
-          <h4 className={`${style.rodape__titulo} ${style['rodape__titulo--alt']}`}>
+          <h3 className={`${style.rodape__titulo} ${style['rodape__titulo--alt']}`}>
             Sobre nós
-          </h4>
+          </h3>
           <div className={style.rodape__links}>
             <Link className={style.rodape__link} to={'/'}>Conheça</Link>
             <Link className={style.rodape__link} to={'/'}>Como Comprar</Link>
@@ -42,7 +42,7 @@ const Rodape: React.FC = () => {
         </section>
 
         <section>
-          <h4 className={style.rodape__titulo}>Informações Úteis</h4>
+          <h3 className={style.rodape__titulo}>Informações Úteis</h3>
           <div className={style.rodape__links}>
             <Link className={style.rodape__link} to={'/'}>Fale Conosco</Link>
             <Link className={style.rodape__link} to={'/'}>Dúvidas</Link>
@@ -54,7 +54,7 @@ const Rodape: React.FC = () => {
         </section>
 
         <aside>
-          <h4 className={style.rodape__titulo}>Formas de Pagamento</h4>
+          <h3 className={style.rodape__titulo}>Formas de Pagamento</h3>
 
           <div className={style.rodape__pagamentos}>
             <Alelo />

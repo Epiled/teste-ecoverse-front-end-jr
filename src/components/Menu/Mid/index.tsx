@@ -6,7 +6,7 @@ import ShoppingCart from '../../../assets/svg/ShoppingCart.svg?react';
 import MagnifyingGlass from '../../../assets/svg/MagnifyingGlass.svg?react';
 import MenuHamburguer from '../../../assets/svg/MenuHamburguer.svg?react';
 import MenuClose from '../../../assets/svg/MenuClose.svg?react';
-import logo from '../../../assets/img/logo.png';
+import logo from '../../../assets/img/webp/logo.webp';
 import style from './Mid.module.scss';
 import { Link } from 'react-router-dom';
 interface IMid {
@@ -19,7 +19,7 @@ const Mid: React.FC<IMid> = ({ setMenu, menuOpen, calculaMenu }) => {
 
   return (
     <div className={style.mid}>
-      <img className={style.mid__logo} src={logo} alt='Logo - VTEX' />
+      <img className={style.mid__logo} src={logo} width={139} height={51} alt='Logo - VTEX' />
 
       <div className={style.mid__container}>
         <div className={style.mid__busca}>

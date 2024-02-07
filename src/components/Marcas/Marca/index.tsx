@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Marca: React.FC = () => {
   return (
     <Link className={style.marca} to={'/'}>
-      <img className={style.marca__imagem} src={vtex} alt="#" />
+      <img className={style.marca__imagem} src={vtex} width={171} height={171} alt="#" />
     </Link>
   )
 }

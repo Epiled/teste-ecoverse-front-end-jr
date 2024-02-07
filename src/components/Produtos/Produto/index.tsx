@@ -27,7 +27,7 @@ const Produto = forwardRef(
         ref={ref}
         key={index}
       >
-        <img className={style.produto__imagem} src={photo} alt="" />
+        <img className={style.produto__imagem} src={photo} width={247} height={228} alt="#" />
         <h3 className={style.produto__titulo}>
           {descriptionShort}
         </h3>
