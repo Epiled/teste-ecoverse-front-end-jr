@@ -31,6 +31,8 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
     const produtoRefPrimeiro = produtosRef.current[0].current;
     const produtoRefPrimeiroPosition = produtoRefPrimeiro?.getBoundingClientRect().x || 0;
 
+    console.log(produtosRef.current)
+
     const produtoRefUltimo = produtosRef.current.at(-1)?.current;
     const produtoRefUltimoPosition = produtoRefUltimo?.getBoundingClientRect().x || 0
 
@@ -47,6 +49,9 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
         let novaPosicao = 0;
 
         if (sentido === 'esq') {
+          console.log(produtoRefPrimeiro?.getBoundingClientRect())
+          console.log(produtoRefPrimeiroPosition)
+          console.log(produtoRefPrimeiroPosition >= 0)
           if (produtoRefPrimeiroPosition >= 0) return
           novaPosicao = valorAtual + larguraProduto
           produto.style.transform = `translateX(${novaPosicao}px)`;

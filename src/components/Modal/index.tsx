@@ -1,6 +1,7 @@
 import { IProduto } from '../../interfaces/IProduto'
 import style from './Modal.module.scss'
 import foto from '../../assets/img/mobile.png'
+import { useState } from 'react';
 
 interface ModalProps {
   produtoSelecionado?: IProduto;
@@ -8,6 +9,24 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ produtoSelecionado, offModal }) => {
+  const [quantidade, setQuantidade] = useState(1);
+
+  const handleDecrement = () => {
+    if (quantidade > 1) {
+      setQuantidade(quantidade - 1);
+    }
+  };
+
+  const handleIncrement = () => {
+    setQuantidade(quantidade + 1);
+  };
+
+  const handleInputChange = (event: { target: { value: string; }; }) => {
+    const value = parseInt(event.target.value, 10);
+    if (!isNaN(value) && value >= 1) {
+      setQuantidade(value);
+    }
+  };
 
   return (
     <aside className={style.modal}>
@@ -30,9 +49,15 @@ const Modal: React.FC<ModalProps> = ({ produtoSelecionado, offModal }) => {
             Veja mais detalhes do produto
           </span>
           <div className={style.modal__ipts}>
-            <button className={style.modal__dec}>-</button>
-            <input className={style.modal__qtd} type="number" name="" id="modalQuantidade" />
-            <button className={style.modal__acre}>+</button>
+            <button className={style.modal__arit} onClick={handleDecrement}>-</button>
+            <input className={style.modal__qtd}
+              type="number"
+              id="modalQuantidade"
+              name="modalQuantidade"
+              value={quantidade}
+              onChange={handleInputChange}
+            />
+            <button className={style.modal__arit} onClick={handleIncrement}>+</button>
           </div>
           <button className={style.modal__btn}>
             Comprar
