@@ -1,13 +1,19 @@
 .produto {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   border-radius: 1rem;
   box-shadow: 0 .3rem 1.9rem 0 var(--shadow-1);
   padding: 1.7rem 1rem;
+  width: 100%;
   max-width: 27rem;
   opacity: 1;
   transform: translateX(0px);
   transition: opacity .5s, transform .5s;
+
+  &[data-visible="false"] {
+    opacity: 0;
+  }
 
   &__titulo {
     color: var(--color-gray-darker-1);

@@ -9,10 +9,11 @@
   position: relative;
   padding: 4rem;
   box-sizing: border-box;
+  max-width: 100%;
 
-  @media screen and (max-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     & {
-      max-width: 100%;
+      flex: 1;
     }
   }
 

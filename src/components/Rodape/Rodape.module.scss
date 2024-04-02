@@ -7,11 +7,15 @@
     flex-wrap: wrap;
     gap: 6rem;
     margin: 0 auto;
-    padding: 6rem 0 3rem 0;
     max-width: 128rem;
+    padding: 3rem 2rem 3rem 2rem;
 
-    @media screen and (max-width: 1280px) {
-      padding: 3rem 1rem 3rem 1rem;
+    @media screen and (max-width: 1100px) {
+      justify-content: space-between;
+    }
+    
+    @media screen and (min-width: 1440px) {
+      padding: 6rem 0 3rem 0;
     }
 
     &--alt {
@@ -82,7 +86,7 @@
     width: 38rem;
     margin-left: auto;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1100px) {
       margin: 0 auto;
       padding: 4rem 2rem;
     }
@@ -124,9 +128,10 @@
     border-top: .1rem solid var(--lighter);
     font-size: 1rem;
     text-transform: uppercase;
+    padding: 0rem 2rem;
 
-    @media screen and (max-width: 1280px) {
-      padding: 0rem 1rem;
+    @media screen and (min-width: 1440px) {
+      padding: 0;
     }
   }
 

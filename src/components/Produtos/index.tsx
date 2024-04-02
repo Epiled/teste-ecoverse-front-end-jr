@@ -18,6 +18,10 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
 
   const [animando, setAnimando] = useState(false);
   const containerTamanho = ref.current?.getBoundingClientRect().width || 0;
+  const containerX = ref.current?.getBoundingClientRect().x || 0;
+  const containerXEnd = containerX + containerTamanho;
+  const containerEstilos = ref?.current ? window.getComputedStyle(ref.current) : 0;
+  const containerGap = containerEstilos ? parseFloat(containerEstilos.gap) : 0;
 
   // Carroussel função e regras
   function moverItens(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -27,11 +31,9 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
     let estiloAtual;
     let valorAtual = 0;
     let larguraProduto = 0;
-    
+
     const produtoRefPrimeiro = produtosRef.current[0].current;
     const produtoRefPrimeiroPosition = produtoRefPrimeiro?.getBoundingClientRect().x || 0;
-
-    console.log(produtosRef.current)
 
     const produtoRefUltimo = produtosRef.current.at(-1)?.current;
     const produtoRefUltimoPosition = produtoRefUltimo?.getBoundingClientRect().x || 0
@@ -47,25 +49,41 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
         estiloAtual = getComputedStyle(produto);
 
         let novaPosicao = 0;
+        const deslocamentoBase = larguraProduto + containerGap;
 
         if (sentido === 'esq') {
-          console.log(produtoRefPrimeiro?.getBoundingClientRect())
-          console.log(produtoRefPrimeiroPosition)
-          console.log(produtoRefPrimeiroPosition >= 0)
-          if (produtoRefPrimeiroPosition >= 0) return
-          novaPosicao = valorAtual + larguraProduto
+          const foraDoContainer = produtoRefPrimeiroPosition - containerX;
+
+          if (foraDoContainer >= 0) return;
+
+          novaPosicao = valorAtual + deslocamentoBase;
           produto.style.transform = `translateX(${novaPosicao}px)`;
+          const posicaoAlterada = produto.getBoundingClientRect().x + deslocamentoBase
+          checkInArea(produto, posicaoAlterada);
         } else {
-          if (produtoRefUltimoPosition <= (containerTamanho - larguraProduto)) return
-          novaPosicao = valorAtual - larguraProduto
+          if (produtoRefUltimoPosition <= (containerXEnd - larguraProduto)) return
+
+          novaPosicao = valorAtual - deslocamentoBase;
           produto.style.transform = `translateX(${novaPosicao}px)`;
+          const posicaoAlterada = produto.getBoundingClientRect().x - deslocamentoBase
+          checkInArea(produto, posicaoAlterada);
         }
       }
+      
     });
-
+    
+    // Intervalo para pressionar o botão novamente
     setTimeout(() => {
       setAnimando(false);
     }, 500); // Ajuste o tempo conforme necessário para a duração da animação
+  }
+
+  function checkInArea(produto: HTMLLIElement, posicaoAtual: number) {
+      if (posicaoAtual >= containerX && posicaoAtual < containerXEnd) {
+        produto.dataset.visible = "true";
+      } else {
+        produto.dataset.visible = "false";
+      }
   }
 
   // Função Auxiliar do carroussel para coletar alguns valores

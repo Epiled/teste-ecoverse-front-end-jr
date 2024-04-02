@@ -3,10 +3,8 @@
   margin: 0 auto;
   padding: 0 2rem;
 
-  @media screen and (min-width: 1300px) {
-    & {
-      padding: 0;
-    }
+  @media screen and (min-width: 1440px) {
+    padding: 0
   }
 
   &__titulo {
@@ -52,9 +50,12 @@
   &__wrap {
     display: flex;
     justify-content: space-between;
-    gap: 6.2rem;
-    overflow: hidden;
+    gap: 5.3rem;
     padding: 2rem 0 2rem 0;
+    
+    @media screen and (min-width: 1440px) {
+      gap: 6.2rem;
+    }
   }
 
   &__setas {
@@ -116,8 +117,9 @@
     margin-top: 5rem;
     margin-bottom: 6rem;
 
-    @media screen and (max-width: 1280px) {
-      justify-content: center;
+    @media screen and (min-width: 1280px) {
+      gap: 10.5rem;
     }
+
   }
 }

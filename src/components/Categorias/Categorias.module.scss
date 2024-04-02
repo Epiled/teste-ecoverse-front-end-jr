@@ -1,6 +1,6 @@
 .categorias {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   max-width: 128rem;
   margin: 4rem auto;
@@ -8,7 +8,13 @@
   gap: 1rem;
   box-sizing: border-box;
 
-  @media screen and (min-width: 1300px) {
+  @media screen and (min-width: 1280px) {
+    & {
+      justify-content: space-between;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
     & {
       padding: 0;
     }
@@ -28,6 +34,7 @@
   border: 0;
   background-color: transparent;
   cursor: pointer;
+  max-width: fit-content;
 
   &--ativo {
     color: var(--color-main);
@@ -55,7 +62,4 @@
     height: 6.1rem;
   }
 
-  @media screen and (min-width: 1300px) {
-
-  }
 }

@@ -15,13 +15,14 @@
   }
 
   @media screen and (min-width: 769px) and (max-width: 1280px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   &__logo {
     width: 100%;
-    max-width: 139px;
+    height: auto;
+    max-width: 13.9rem;
     position: relative;
 
     @media screen and (max-width: 768px) {
