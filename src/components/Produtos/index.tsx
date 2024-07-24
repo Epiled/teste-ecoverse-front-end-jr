@@ -3,7 +3,7 @@ import Parceiro from '../Parceiro';
 import Titulo from '../Titulo';
 import Produto from './Produto';
 import { IProduto } from '../../interfaces/IProduto';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -69,9 +69,9 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
           checkInArea(produto, posicaoAlterada);
         }
       }
-      
+
     });
-    
+
     // Intervalo para pressionar o botão novamente
     setTimeout(() => {
       setAnimando(false);
@@ -79,11 +79,11 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
   }
 
   function checkInArea(produto: HTMLLIElement, posicaoAtual: number) {
-      if (posicaoAtual >= containerX && posicaoAtual < containerXEnd) {
-        produto.dataset.visible = "true";
-      } else {
-        produto.dataset.visible = "false";
-      }
+    if (posicaoAtual >= containerX && posicaoAtual < containerXEnd) {
+      produto.dataset.visible = "true";
+    } else {
+      produto.dataset.visible = "false";
+    }
   }
 
   // Função Auxiliar do carroussel para coletar alguns valores
@@ -94,6 +94,17 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
 
     return { valorAtual, larguraProduto }
   }
+
+  useEffect(() => {
+    produtosRef.current.forEach(produtoRef => {
+      const produto = produtoRef.current;
+      if (produto) {
+        const posicaoAtual = produto.getBoundingClientRect().x;
+        checkInArea(produto, posicaoAtual);
+      }
+    });
+  }, [produtos]);
+
 
   return (
     <section className={style.produtos}>

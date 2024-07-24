@@ -6,6 +6,7 @@
   box-sizing: border-box;
   border-radius: 100%;
   box-shadow: 0 .7rem 2rem 0 var(--shadow-4);
+  transition: opacity 0.5s, transform 0.5s;
 
   &__imagem {
     object-fit: contain;

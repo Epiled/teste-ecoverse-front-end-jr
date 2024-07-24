@@ -22,6 +22,12 @@
     top: 50%;
     right: 4.5rem;
     transform: translateY(-50%);
+
+    &--esq {
+      right: unset;
+      left: 4.5rem;
+      transform: translateY(-50%) rotate(180deg);
+    }
   }
 
 }
