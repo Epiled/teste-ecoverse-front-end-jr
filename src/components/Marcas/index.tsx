@@ -1,7 +1,7 @@
 import Titulo from "../Titulo";
 import style from './Marcas.module.scss';
 import Marca from "./Marca";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const Marcas: React.FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
