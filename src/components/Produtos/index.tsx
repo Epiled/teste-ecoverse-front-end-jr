@@ -6,8 +6,6 @@ import { IProduto } from '../../interfaces/IProduto';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ErrorFeedBack from '../ErrorFeedBack';
-import classNames from 'classnames';
-
 interface Props {
   produtos: IProduto[],
   selecionaProduto: (produtoSelecionado: IProduto) => void;
@@ -114,7 +112,6 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
   useEffect(() => {
     if (produtos.length > 0) {
       setHasProduct(true); // Se houver produtos, atualiza hasProduct para true
-      produtosRef.current = produtos.map(() => React.createRef()); // Cria referências para cada produto
     } else {
       setHasProduct(false); // Se não houver produtos, define hasProduct como false
     }
