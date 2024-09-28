@@ -8,7 +8,7 @@ import Marcas from '../components/Marcas';
 import Rodape from '../components/Rodape';
 import Modal from '../components/Modal';
 import { IProduto } from '../interfaces/IProduto';
-import axios from 'axios';
+import { useDadosProdutos } from '../service/useProdutos';
 
 const Home: React.FC = () => {
 
@@ -16,15 +16,12 @@ const Home: React.FC = () => {
   const [produtoSelecionado, setProdutoSelecionado] = useState<IProduto>();
   const [modalAberta, setModal] = useState(false);
 
+  const { dados } = useDadosProdutos();
+
   useEffect(() => {
-    axios.get('http://localhost:5173/db/produtos.json')
-      .then(resposta => {
-        setProdutos(resposta.data.products);
-      })
-      .catch(erro => {
-        console.log(erro)
-      })
-  }, [])
+    dados && setProdutos(dados);
+  }, [dados])
+
 
   function selecionaProduto(produtoSelecionado: IProduto) {
     setProdutoSelecionado(produtoSelecionado);
@@ -52,7 +49,7 @@ const Home: React.FC = () => {
         produtos={produtos}
         selecionaProduto={selecionaProduto}
         onModal={onModal}
-      />
+      />      
       <Relacionados />
       <Marcas />
       {modalAberta && <Modal

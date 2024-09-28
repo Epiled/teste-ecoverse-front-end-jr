@@ -5,6 +5,8 @@ import Produto from './Produto';
 import { IProduto } from '../../interfaces/IProduto';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ErrorFeedBack from '../ErrorFeedBack';
+import classNames from 'classnames';
 
 interface Props {
   produtos: IProduto[],
@@ -95,16 +97,28 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
     return { valorAtual, larguraProduto }
   }
 
+  const [hasProduct, setHasProduct] = useState(false);
+
   useEffect(() => {
     produtosRef.current.forEach(produtoRef => {
       const produto = produtoRef.current;
       if (produto) {
         const posicaoAtual = produto.getBoundingClientRect().x;
         checkInArea(produto, posicaoAtual);
+        setHasProduct(true)
       }
     });
   }, [produtos]);
 
+
+  useEffect(() => {
+    if (produtos.length > 0) {
+      setHasProduct(true); // Se houver produtos, atualiza hasProduct para true
+      produtosRef.current = produtos.map(() => React.createRef()); // Cria referências para cada produto
+    } else {
+      setHasProduct(false); // Se não houver produtos, define hasProduct como false
+    }
+  }, [produtos]);
 
   return (
     <section className={style.produtos}>
@@ -122,6 +136,7 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
       </nav>
 
       <div className={style.produtos__vitrine}>
+
         <ul className={style.produtos__wrap} ref={ref}>
           {produtos.map((produto, index) => {
             produtosRef.current[index] = React.createRef();
@@ -133,26 +148,27 @@ const Produtos: React.FC<Props> = ({ produtos, selecionaProduto, onModal }) => {
                 ref={produtosRef.current[index]}
                 selecionaProduto={selecionaProduto}
                 onModal={onModal}
-                {...produto}
-              />
-            )
+                {...produto} />
+            );
           })}
         </ul>
-
         <div className={style.produtos__setas}>
           <button
-            onClick={(e) => { moverItens(e) }}
+            onClick={(e) => { moverItens(e); }}
             data-sentido='esq'
             className={`${style.produtos__seta} ${style['produtos__seta--esq']}`}
             aria-label='Retroceder lista de produtos'>
           </button>
           <button
-            onClick={(e) => { moverItens(e) }}
+            onClick={(e) => { moverItens(e); }}
             data-sentido='dir'
             className={`${style.produtos__seta} ${style['produtos__seta--dir']}`}
             aria-label='Avançar lista de produtos'>
           </button>
         </div>
+
+        {!hasProduct && <ErrorFeedBack />}
+
       </div>
 
       <div className={style.produtos__parceiros}>

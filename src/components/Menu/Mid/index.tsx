@@ -56,16 +56,16 @@ const Mid: React.FC<IMid> = ({ setMenu, menuOpen, calculaMenu }) => {
       </div>
 
       <nav className={style.mid__icons}>
-        <Link className={style.mid__link} to={''}>
+        <Link className={style.mid__link} to={''} aria-label='Acessar acompanhamento de pedidos'>
           <Group className={`${style.mid__iconLink} ${style['mid__iconLink--fill']}`} />
         </Link>
-        <Link className={style.mid__link} to={''}>
+        <Link className={style.mid__link} to={''} aria-label='Acessar favoritos'>
           <Heart className={style.mid__iconLink} />
         </Link>
-        <Link className={style.mid__link} to={''}>
+        <Link className={style.mid__link} to={''} aria-label='Acessar perfil'>
           <UserCircle className={style.mid__iconLink} />
         </Link>
-        <Link className={style.mid__link} to={''}>
+        <Link className={style.mid__link} to={''} aria-label='Acessar carrinho de compras'>
           <ShoppingCart className={style.mid__iconLink} />
         </Link>
       </nav>
